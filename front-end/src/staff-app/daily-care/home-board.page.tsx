@@ -92,6 +92,7 @@ export const HomeBoardPage: React.FC = () => {
       }
       return student;
     });
+    updatedStudents.sort((a, _b) => a.status === "late" ? -1 : 1);
     updatedStudents.sort((a, _b) => a.status === "present" ? -1 : 1);
     setStudents(updatedStudents);
   };

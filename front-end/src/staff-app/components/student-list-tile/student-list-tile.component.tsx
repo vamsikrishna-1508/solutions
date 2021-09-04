@@ -40,7 +40,9 @@ export const RollListTile: React.FC<rollProps> = ({ roll, size = 40, }) => {
     <S.Container>
       <S.Avatar url={Images.avatar}></S.Avatar>
       <S.Content>{rollesData.student_id}</S.Content>
+      <S.Roll>
       <RollerStateIcon type={rollesData.roll_state} size={size} />
+      </S.Roll>
     </S.Container>
   )
 }
