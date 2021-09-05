@@ -18,7 +18,13 @@ export const StudentListTile: React.FC<Props> = ({ isRollMode, student, onItemCl
     <S.Container>
       <S.Avatar url={Images.avatar}></S.Avatar>
       <S.Content>
-        <div>{PersonHelper.getFullName(student)}</div>
+        <div>{PersonHelper.getFullName(student)} 
+        <br />
+        <br />
+        <>
+        Roll ID: {student.id}
+        </>
+        </div>
       </S.Content>
       {isRollMode && (
         <S.Roll>
@@ -49,7 +55,7 @@ export const RollListTile: React.FC<rollProps> = ({ student, roll, size = 40, })
           <br />
           <br />
              <>
-            Roll ID : {rollesData.student_id}
+            Roll ID: {rollesData.student_id}
              </>
         </div>
         }
