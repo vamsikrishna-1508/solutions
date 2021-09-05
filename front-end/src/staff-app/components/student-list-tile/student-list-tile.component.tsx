@@ -31,15 +31,30 @@ export const StudentListTile: React.FC<Props> = ({ isRollMode, student, onItemCl
 
 interface rollProps {
   roll: RollInput,
+  student?: Person,
   size?: number
 }
 
-export const RollListTile: React.FC<rollProps> = ({ roll, size = 40, }) => {
+export const RollListTile: React.FC<rollProps> = ({ student, roll, size = 40, }) => {
   let rollesData:any = roll
+  let studData:any = student
   return (
     <S.Container>
       <S.Avatar url={Images.avatar}></S.Avatar>
-      <S.Content>{rollesData.student_id}</S.Content>
+      <S.Content>{studData !== undefined && studData.students.map((stId:any)=>{
+        let studentNames:any
+        if(stId.id === rollesData.student_id){
+         studentNames =  <div>
+          <>{PersonHelper.getFullName(stId)}</>
+          <br />
+          <br />
+             <>
+            Roll ID : {rollesData.student_id}
+             </>
+        </div>
+        }
+        return studentNames
+      })}</S.Content>
       <S.Roll>
       <RollerStateIcon type={rollesData.roll_state} size={size} />
       </S.Roll>

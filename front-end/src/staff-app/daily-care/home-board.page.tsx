@@ -45,6 +45,8 @@ export const HomeBoardPage: React.FC = () => {
     }
   }, [data]);
 
+  //console.log(data)
+
   const onToolbarAction = (action: ToolbarAction, value = '') => {
     if (action === "roll") {
       setIsRollMode(true)

@@ -27,7 +27,7 @@ interface Rrops {
 export const RollerStateIcon: React.FC<Rrops> = (rrops) => {
   const { type, size = 20 } = rrops
   return (
-    <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor1(type)} >
+    <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor1(type)} placeholder={type} >
       <FontAwesomeIcon icon="check" size={size > 14 ? "lg" : "sm"} />
     </R.Icon>
   )
