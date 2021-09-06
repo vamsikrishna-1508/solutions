@@ -48,6 +48,7 @@ function getBgColor(type: RolllStateType) {
   }
 }
 
+
 function statusValues(type: RolllStateType) {
   switch (type) {
     case "unmark":
