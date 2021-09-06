@@ -5,7 +5,6 @@ import { BorderRadius } from "shared/styles/styles"
 import { Colors } from "shared/styles/colors"
 import { RolllStateType } from "shared/models/roll"
 import {
-  MuiThemeProvider,
   withStyles
 } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
