@@ -4,6 +4,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { BorderRadius } from "shared/styles/styles"
 import { Colors } from "shared/styles/colors"
 import { RolllStateType } from "shared/models/roll"
+import {
+  MuiThemeProvider,
+  withStyles
+} from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
+
+
+const TextOnlyTooltip = withStyles({
+  tooltip: {
+    color: "white",
+    position: "relative",
+    left: "15px",
+    fontSize : "15px",
+  }
+})(Tooltip);
+
 
 interface Props {
   type: RolllStateType
@@ -27,9 +43,11 @@ interface Rrops {
 export const RollerStateIcon: React.FC<Rrops> = (rrops) => {
   const { type, size = 20 } = rrops
   return (
-    <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor(type)} title={statusValues(type)} >
+    <TextOnlyTooltip title={statusValues(type)} placement="right">
+    <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor(type)} >
       <FontAwesomeIcon icon="check" size={size > 14 ? "lg" : "sm"} />
     </R.Icon>
+    </TextOnlyTooltip>
   )
 }
 
