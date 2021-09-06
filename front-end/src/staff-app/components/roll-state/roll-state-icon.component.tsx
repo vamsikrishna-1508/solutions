@@ -10,15 +10,6 @@ import {
 import Tooltip from "@material-ui/core/Tooltip";
 
 
-const TextOnlyTooltip = withStyles({
-  tooltip: {
-    color: "white",
-    position: "relative",
-    left: "15px",
-    fontSize : "15px",
-  }
-})(Tooltip);
-
 
 interface Props {
   type: RolllStateType
@@ -41,8 +32,17 @@ interface Rrops {
 
 export const RollerStateIcon: React.FC<Rrops> = (rrops) => {
   const { type, size = 20 } = rrops
+  const TextOnlyTooltip:any = withStyles( {
+    tooltip: {
+      color: "white",
+      position: "relative",
+      left: "15px",
+      fontSize : "15px",
+      backgroundColor: statusTool(type)
+    }
+  })(Tooltip);
   return (
-    <TextOnlyTooltip title={statusValues(type)} placement="right">
+    <TextOnlyTooltip title={statusValues(type)} placement="right" >
     <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor(type)} >
       <FontAwesomeIcon icon="check" size={size > 14 ? "lg" : "sm"} />
     </R.Icon>
@@ -54,6 +54,21 @@ function getBgColor(type: RolllStateType) {
   switch (type) {
     case "unmark":
       return "#fff"
+    case "present":
+      return "#13943b"
+    case "absent":
+      return "#9b9b9b"
+    case "late":
+      return "#f5a623"
+    default:
+      return "#13943b"
+  }
+}
+
+function statusTool(type: RolllStateType) {
+  switch (type) {
+    case "unmark":
+      return "#f50c0c"
     case "present":
       return "#13943b"
     case "absent":
