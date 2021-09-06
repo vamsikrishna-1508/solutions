@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import Button from "@material-ui/core/ButtonBase"
 import { Roll } from "shared/models/roll"
@@ -13,7 +13,6 @@ import { useApi } from "shared/hooks/use-api"
 export const ActivityPage: React.FC = () => {
   const [getActivities, data, loadState, error] = useApi<{ roll: Roll[] }>({ url: "get-activities" });
   const [getStudents, Sdata] = useApi<{ students: Person[] }>({ url: "get-homeboard-students" });
-  const [students, setStudents] = useState<Person[]>([]);
   let rolledData:any = data
   let StuData:any =  Sdata
 
@@ -26,19 +25,17 @@ useEffect(() => {
   void getStudents()
 }, [getStudents]);
 
-useEffect(() => {
-  if (Sdata) {
-    setStudents(Sdata.students);
-  }
-}, [Sdata]);
-
   useEffect(() => {
     void getActivities()
   }, [getActivities]);
 
-  console.log(Sdata)
+  if(Sdata !== undefined){
+    console.log(Sdata);
+  }
 
-  console.log(rolledData)
+  if(rolledData !== undefined){
+    console.log(Sdata);
+  }
 
   if (error) return (<CenteredContainer>
   <div>Failed to load</div>
