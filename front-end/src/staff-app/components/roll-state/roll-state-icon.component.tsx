@@ -27,7 +27,7 @@ interface Rrops {
 export const RollerStateIcon: React.FC<Rrops> = (rrops) => {
   const { type, size = 20 } = rrops
   return (
-    <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor1(type)} placeholder={type} >
+    <R.Icon size={size} border={type === "unmark"} bgColor={getBgColor1(type)} title={statusValues(type)} >
       <FontAwesomeIcon icon="check" size={size > 14 ? "lg" : "sm"} />
     </R.Icon>
   )
@@ -51,7 +51,7 @@ function getBgColor(type: RolllStateType) {
 function getBgColor1(type: RolllStateType) {
   switch (type) {
     case "unmark":
-      return "#e9130cf6"
+      return "#fff"
     case "present":
       return "#13943b"
     case "absent":
@@ -60,6 +60,21 @@ function getBgColor1(type: RolllStateType) {
       return "#f5a623"
     default:
       return "#13943b"
+  }
+}
+
+function statusValues(type: RolllStateType) {
+  switch (type) {
+    case "unmark":
+      return "Not Marked"
+    case "present":
+      return "Present"
+    case "absent":
+      return "Absent"
+    case "late":
+      return "Late"
+    default:
+      return "Not Marked"
   }
 }
 
