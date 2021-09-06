@@ -51,10 +51,11 @@ useEffect(() => {
     <h1>Activity Page</h1>
     <>
     {rolledData !== undefined && rolledData.activity.map((r:any) => {
-     let activityBar =  <S.ToolbarContainer>
+     let activityBar = <><br /> <S.ToolbarContainer>
      <div> {r.entity.name} </div>
      <div> {r.entity.completed_at} </div>
       </S.ToolbarContainer>
+      </>
       let studentTile = <>
         {r.entity.student_roll_states !== undefined &&r.entity.student_roll_states.map((stuData:any) => {
           const RollData:any = <RollListTile roll={stuData} student={StuData}/>
