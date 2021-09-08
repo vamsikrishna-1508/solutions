@@ -60,10 +60,18 @@ export const HomeBoardPage: React.FC = () => {
       if (!value && data?.students) {
         setStudents([...data.students]);
       } else {
-        const filteredStudents = students.filter(
-          student => (student.first_name+student.last_name).toLowerCase().includes(value.toLowerCase())
-        );
-        setStudents(filteredStudents);
+        const studentData = data?.students;
+        if(students.length !== 0){
+          const filteredStudents = students.filter(
+            student => (student.first_name+' '+student.last_name).toLowerCase().includes(value.toLowerCase())
+          );
+          setStudents(filteredStudents);
+        }else {
+          const filteredStudent:any = studentData?.filter(
+            lstudent => (lstudent.first_name+' '+lstudent.last_name).toLowerCase().includes(value.toLowerCase())
+          );
+          setStudents(filteredStudent);
+        }
       }
     } else if (action === "reset") {
       if (data && data.students) {
