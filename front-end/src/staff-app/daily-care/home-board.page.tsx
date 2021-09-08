@@ -18,6 +18,7 @@ const buildReport = (students: Person[]) => {
     { type: "late", count: 0 },
     { type: "absent", count: 0 },
   ];
+  console.log(students);
   students.forEach(({ status }) => {
     if (status) {
       const idx = result.findIndex(({ type }) => type === status);
