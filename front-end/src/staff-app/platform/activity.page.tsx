@@ -38,7 +38,7 @@ useEffect(() => {
   }
 
   if (error) return (<CenteredContainer>
-  <div>Failed to load</div>
+  <div>Failed to load. Please refresh the page.</div>
 </CenteredContainer>)
 
 

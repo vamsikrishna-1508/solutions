@@ -61,7 +61,7 @@ export const HomeBoardPage: React.FC = () => {
         setStudents([...data.students]);
       } else {
         const filteredStudents = students.filter(
-          student => student.first_name.toLowerCase().includes(value.toLowerCase())
+          student => (student.first_name+student.last_name).toLowerCase().includes(value.toLowerCase())
         );
         setStudents(filteredStudents);
       }
