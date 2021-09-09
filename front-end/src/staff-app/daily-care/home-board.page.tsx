@@ -18,7 +18,6 @@ const buildReport = (students: Person[]) => {
     { type: "late", count: 0 },
     { type: "absent", count: 0 },
   ];
-  console.log(students);
   students.forEach(({ status }) => {
     if (status) {
       const idx = result.findIndex(({ type }) => type === status);
@@ -46,7 +45,8 @@ export const HomeBoardPage: React.FC = () => {
     }
   }, [data]);
 
-  //console.log(data)
+  const latestStud :any = students;
+
 
   const onToolbarAction = (action: ToolbarAction, value = '') => {
     if (action === "roll") {
@@ -75,8 +75,8 @@ export const HomeBoardPage: React.FC = () => {
         }
       }
     } else if (action === "reset") {
-      if (data && data.students) {
-        setStudents([...data.students]);
+      if (latestStud) {
+        setStudents([...latestStud]);
       } 
     }
   }
@@ -133,7 +133,7 @@ export const HomeBoardPage: React.FC = () => {
           </CenteredContainer>
         )}
       </S.PageContainer>
-      <ActiveRollOverlay isActive={isRollMode} onItemClick={onActiveRollAction} list={buildReport(students)} />
+      <ActiveRollOverlay isActive={isRollMode} onItemClick={onActiveRollAction} list={buildReport(latestStud)} />
     </>
   )
 }

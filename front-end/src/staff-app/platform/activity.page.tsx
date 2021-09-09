@@ -17,19 +17,16 @@ export const ActivityPage: React.FC = () => {
   let StuData:any =  Sdata
 
 
-  function getDateText(students:any){
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-                      "July", "August", "September", "October", "November", "December"
-                     ];
+  const getDateText = (students:any) =>{
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var d = new Date(students);
     var day = d.getDay();
     var month = monthNames[d.getMonth()];
     var year = d.getFullYear();
     var hour = d.getHours();
     var min = d.getMinutes();
-
-var fullDatetime = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-return fullDatetime;
+    var fullDatetime = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+    return fullDatetime;
   }
 
  // if(rolledData !== undefined){    // In case of Latest Date Sort //
@@ -37,6 +34,8 @@ return fullDatetime;
 //    return  +new Date(b.date) - +new Date(a.date);
  // })
 //}
+
+
 useEffect(() => {
   void getStudents()
 }, [getStudents]);
